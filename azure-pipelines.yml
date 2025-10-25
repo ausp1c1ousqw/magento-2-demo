@@ -1,0 +1,39 @@
+trigger:
+  - main # ветка, при пуше в которую запускаем тесты
+
+pool:
+  vmImage: "ubuntu-latest"
+
+steps:
+  # Устанавливаем Node.js
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "18.x"
+    displayName: "Install Node.js"
+
+  # Клонирование репозитория происходит автоматически через Azure DevOps → GitHub integration
+
+  # Устанавливаем зависимости
+  - script: |
+      npm ci
+    displayName: "Install dependencies"
+
+  # Запускаем тесты
+  - script: |
+      npx wdio
+    displayName: "Run WebdriverIO Cucumber tests"
+
+  # Публикуем JUnit результаты
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: "**/artifacts/junit/*.xml"
+      testRunTitle: "WebdriverIO Test Results"
+    condition: succeededOrFailed()
+
+  # Публикуем Allure артефакты
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: "artifacts/allure-results"
+      ArtifactName: "AllureResults"
+      publishLocation: "Container"
+    displayName: "Upload Allure results"
