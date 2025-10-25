@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@sergey/gui-framework": "file:../../framework/gui"
+    "@sergey/gui-framework": "git+https://github.com/ausp1c1ousqw/gui-framework.git"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^12.2.0",
