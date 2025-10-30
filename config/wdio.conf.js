@@ -1,4 +1,7 @@
+import { hooks } from "@sergey/gui-framework";
+
 export const config = {
+  ...hooks,
   baseUrl: process.env.BASE_URL || "https://magento2demo.firebearstudio.com/",
   debugDir: process.env.DEBUG_DIR || "./artifacts",
 
