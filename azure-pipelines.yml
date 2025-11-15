@@ -22,15 +22,14 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: "$(Build.SourcesDirectory)/package.json"
-      artifactName: "source"
+      pathToPublish: "artifacts/allure-report"
+      artifactName: "allure-report"
       publishLocation: "Container"
-    displayName: "Publish project as artifact"
+    displayName: "Publish Allure report"
 
-  - task: PublishTestResults@2
+  - task: PublishBuildArtifacts@1
     inputs:
-      testResultsFiles: "artifacts/junit/*.xml"
-      testResultsFormat: "JUnit"
-      mergeTestResults: true
-      failTaskOnFailedTests: true
-    condition: always()
+      pathToPublish: "artifacts/junit"
+      artifactName: "junit"
+      publishLocation: "Container"
+    displayName: "Publish JUnit results"
