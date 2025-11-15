@@ -16,13 +16,13 @@ steps:
   - script: npm test
     displayName: "Run tests"
 
-  - script: npx allure generate ./artifacts/allure-results --clean
+  - script: npm run allure:generate
     displayName: "Generate Allure HTML report"
     condition: always()
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: "allure-report"
+      pathToPublish: "artifacts/allure-report"
       artifactName: "allure-html"
       publishLocation: "Container"
     displayName: "Publish Allure HTML"
