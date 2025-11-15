@@ -22,6 +22,9 @@ export const config = {
       maxInstances: 1,
       "goog:chromeOptions": {
         args: [
+          "--headless=new",
+          "--disable-gpu",
+          "--no-sandbox",
           "--disable-notifications",
           "--disable-features=BlockInsecurePrivateNetworkRequests,PrivateNetworkAccessPermissionPrompt",
           "--ignore-certificate-errors",
