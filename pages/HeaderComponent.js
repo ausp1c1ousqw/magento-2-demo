@@ -1,5 +1,13 @@
 import { headerSelectors } from "./selectors/selectors.js";
-import { BasePage, Button, Label, Input, Checkbox, Link, pageHelpers } from "@sergey/gui-framework";
+import {
+  BasePage,
+  Button,
+  Label,
+  Input,
+  Checkbox,
+  Link,
+  pageHelpers,
+} from "automation-framework/gui";
 
 class HeaderComponent {
   get signInLink() {
@@ -23,7 +31,7 @@ class HeaderComponent {
     await pageHelpers.assertTextsWithLogging(
       actualMessage,
       expectedMessage,
-      `Assert actual Welcome message: '${actualMessage}' with expected: '${expectedMessage}'`
+      `Verify Welcome message`
     );
   }
 }

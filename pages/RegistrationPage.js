@@ -1,6 +1,14 @@
 import { urls } from "../config/urls.js";
 import { registrationPageSelectors } from "./selectors/selectors.js";
-import { BasePage, Button, Label, Input, Checkbox, Link, pageHelpers } from "@sergey/gui-framework";
+import {
+  BasePage,
+  Button,
+  Label,
+  Input,
+  Checkbox,
+  Link,
+  pageHelpers,
+} from "automation-framework/gui";
 
 class RegistrationPage extends BasePage {
   constructor() {
@@ -59,7 +67,7 @@ class RegistrationPage extends BasePage {
     await pageHelpers.assertTextsWithLogging(
       actualError,
       expectedError,
-      `Assert actual error message: '${actualError}' with expected: '${expectedError}'`
+      `Verify top error message`
     );
   }
 

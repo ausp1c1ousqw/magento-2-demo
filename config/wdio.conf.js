@@ -1,9 +1,12 @@
-import { hooks } from "@sergey/gui-framework";
+import { initLogger, initConfig } from "automation-framework/initFramework";
+import projectConfig from "./config.js";
+import loggerSettings from "./loggerConfig.js";
+initConfig(projectConfig);
+initLogger(loggerSettings);
+import hooks from "../hooks/mergedHooks.js";
 
 export const config = {
   ...hooks,
-  baseUrl: process.env.BASE_URL || "https://magento2demo.firebearstudio.com/",
-  debugDir: process.env.DEBUG_DIR || "./artifacts",
 
   runner: "local",
 
@@ -18,7 +21,12 @@ export const config = {
       browserName: "chrome",
       maxInstances: 1,
       "goog:chromeOptions": {
-        args: ["--disable-notifications"],
+        args: [
+          "--disable-notifications",
+          "--disable-features=BlockInsecurePrivateNetworkRequests,PrivateNetworkAccessPermissionPrompt",
+          "--ignore-certificate-errors",
+          "--allow-insecure-localhost",
+        ],
       },
     },
   ],

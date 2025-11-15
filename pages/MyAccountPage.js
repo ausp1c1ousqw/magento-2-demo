@@ -1,5 +1,13 @@
 import { myAccounPageSelectors } from "./selectors/selectors.js";
-import { BasePage, Button, Label, Input, Checkbox, Link, pageHelpers } from "@sergey/gui-framework";
+import {
+  BasePage,
+  Button,
+  Label,
+  Input,
+  Checkbox,
+  Link,
+  pageHelpers,
+} from "automation-framework/gui";
 
 class MyAccountPage extends BasePage {
   constructor() {

@@ -6,8 +6,7 @@ Then("Registration page is opened", async () => {
 });
 
 When("I register a new account with:", async (dataTable) => {
-  const data = dataTable.rows()[0];
-  const [firstName, lastName, email, password] = data;
+  const { firstName, lastName, email, password } = dataTable.hashes()[0];
 
   await RegistrationPage.enterFirstName(firstName);
   await RegistrationPage.enterLastName(lastName);
