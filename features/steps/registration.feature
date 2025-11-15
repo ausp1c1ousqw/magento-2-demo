@@ -1,6 +1,6 @@
 Feature: User Registration
   
-
+@REG_SUCCESS_001
   Scenario: Successful registration
     Given I open the main page
     When I click Create an Account link
@@ -11,6 +11,7 @@ Feature: User Registration
    Then I should see welcome message "Welcome, testName testLastName!"
    # And My Account page is opened
 
+@REG_FAILURE_001
    Scenario: Registration with already registered email
     Given I open the main page
     When I click Create an Account link

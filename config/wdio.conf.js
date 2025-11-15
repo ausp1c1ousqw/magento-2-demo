@@ -54,6 +54,7 @@ export const config = {
         outputFileFormat: function (opts) {
           return `results-${opts.cid}.xml`;
         },
+        useAutomationIds: true,
       },
     ],
   ],

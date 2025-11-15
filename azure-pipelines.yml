@@ -32,5 +32,6 @@ steps:
     inputs:
       testResultsFiles: "artifacts/junit/*.xml"
       testResultsFormat: "JUnit"
+      mergeTestResults: true
       failTaskOnFailedTests: true
     condition: always()
