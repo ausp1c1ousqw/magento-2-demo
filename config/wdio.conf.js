@@ -50,7 +50,7 @@ export const config = {
     [
       "junit",
       {
-        outputDir: "./artifacts/reports",
+        outputDir: "./artifacts/junit",
         outputFileFormat: function (opts) {
           return `results-${opts.cid}.xml`;
         },

@@ -15,3 +15,19 @@ steps:
 
   - script: npm test
     displayName: "Run tests"
+
+  - script: npx allure generate ./artifacts/allure-results --clean
+    displayName: "Generate Allure HTML report"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: "allure-report"
+      artifactName: "allure-html"
+      publishLocation: "Container"
+    displayName: "Publish Allure HTML"
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: "artifacts/junit/*.xml"
+      testResultsFormat: "JUnit"
+      failTaskOnFailedTests: true
