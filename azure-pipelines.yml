@@ -22,11 +22,10 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: "artifacts/allure-report"
-      artifactName: "allure-html"
+      pathToPublish: "$(Build.SourcesDirectory)"
+      artifactName: "source"
       publishLocation: "Container"
-    displayName: "Publish Allure HTML"
-    condition: always()
+    displayName: "Publish project as artifact"
 
   - task: PublishTestResults@2
     inputs:
