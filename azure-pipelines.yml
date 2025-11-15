@@ -22,7 +22,7 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: "$(Build.SourcesDirectory)"
+      pathToPublish: "$(Build.SourcesDirectory)/package.json"
       artifactName: "source"
       publishLocation: "Container"
     displayName: "Publish project as artifact"
