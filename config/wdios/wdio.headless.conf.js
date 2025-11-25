@@ -1,16 +1,16 @@
-import { initLogger, initConfig } from "automation-framework/initFramework";
-import projectConfig from "./config.js";
-import loggerSettings from "./loggerConfig.js";
+import { initLogger, initConfig } from "automation-framework/init";
+import { projectConfig } from "../projectConfig.js";
+import { loggerConfig } from "../loggerConfig.js";
 initConfig(projectConfig);
-initLogger(loggerSettings);
-import hooks from "../hooks/mergedHooks.js";
+initLogger(loggerConfig);
+import hooks from "../../hooks/hooks.js";
 
 export const config = {
   ...hooks,
 
   runner: "local",
 
-  maxInstances: 1,
+  maxInstances: 2,
   logLevel: "silent",
   waitforTimeout: 5000,
   connectionRetryTimeout: 120000,
@@ -19,23 +19,15 @@ export const config = {
   capabilities: [
     {
       browserName: "chrome",
-      maxInstances: 1,
+      maxInstances: 2,
       "goog:chromeOptions": {
-        args: [
-          "--headless=new",
-          "--disable-gpu",
-          "--no-sandbox",
-          "--disable-notifications",
-          "--disable-features=BlockInsecurePrivateNetworkRequests,PrivateNetworkAccessPermissionPrompt",
-          "--ignore-certificate-errors",
-          "--allow-insecure-localhost",
-        ],
+        args: ["--headless=new", "--disable-gpu", "--no-sandbox"],
       },
     },
   ],
 
   framework: "cucumber",
-  specs: ["../features/**/*.feature"],
+  specs: ["../../features/**/*.feature"],
 
   reporters: [
     [
@@ -61,12 +53,7 @@ export const config = {
 
   cucumberOpts: {
     require: ["./features/**/*.js"],
-    backtrace: false,
-    snippets: true,
-    source: true,
-    strict: false,
     tagExpression: "not @skip",
     timeout: 60000,
-    ignoreUndefinedDefinitions: false,
   },
 };

@@ -10,8 +10,6 @@ import {
 } from "automation-framework/gui";
 
 class NavigationComponent extends BasePage {
-  // Page Elements
-
   async openMenuItem(string) {
     const array = string.split(" > ");
     let currentItems = navigationSelectors.navMenu.items;
