@@ -26,6 +26,7 @@ steps:
       artifactName: "allure-report"
       publishLocation: "Container"
     displayName: "Publish Allure report"
+    condition: always()
 
   - task: PublishBuildArtifacts@1
     inputs:
@@ -33,3 +34,4 @@ steps:
       artifactName: "junit"
       publishLocation: "Container"
     displayName: "Publish JUnit results"
+    condition: always()
